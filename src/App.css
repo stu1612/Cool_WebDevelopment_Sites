@@ -17,21 +17,14 @@
   --border-radius: "4px 4px 6px rgba(--accent-dark, 0.4)";
 }
 
+html,
 body {
   font-family: "Raleway", sans-serif;
-  display: flex;
-  justify-content: center;
-  width: 100%;
   background-color: var(--bg-color);
 }
 
 .App {
-  display: grid;
-  width: min(95%, 50rem);
-  min-height: 100vh;
-  row-gap: 1.5rem;
-  justify-items: center;
-  align-content: center;
-  text-align: center;
-  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
