@@ -9,11 +9,11 @@
 }
 
 :root {
-  --bg-color: #eff1c5;
-  --accent-blue: #035e7b;
-  --accent-dark: #002e2c;
+  --accent-blue: #0066b2;
+  --accent-blue-darker: #175280;
+  --error: #962c2c;
+  --error-darker: #7e2020;
   --primary-light: #fafafa;
-  --primary-dark: #181818;
   --border-radius: 12px;
   --text-shadow: "4px 4px 6px rgba(--accent-dark, 0.4)";
 }
@@ -28,29 +28,21 @@ body {
   );
 }
 
-.App {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
 p,
 span {
   font-size: 12px;
   line-height: 18px;
 }
 
-/* span {
-  display: none;
-} */
-
 h2 {
   font-size: 14px;
   line-height: 21px;
+  color: rgb(56, 56, 56);
 }
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 label {
@@ -93,20 +85,34 @@ button {
   font-family: "Raleway", sans-serif;
 }
 
-.input-select {
-  background-color: white;
-  color: black;
-  width: 90%;
-  display: block;
-  margin: 0 auto;
-  height: 48px;
-  border-radius: 25px;
+/* general */
+
+.margin-2 {
+  margin: 2rem 0;
+}
+
+.margin-left {
+  margin-left: 25px !important;
 }
 
 .row {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+/* App */
+
+.App {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.popup {
+  background: white;
+  position: absolute;
+  top: 0;
+  padding: 0.5rem 1rem;
 }
 
 /* layout */
@@ -122,7 +128,7 @@ button {
   padding: 5rem 0;
 }
 
-.cards-container {
+.bookmarks-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -130,6 +136,7 @@ button {
 }
 
 /* modal */
+
 .modal-background {
   width: 100%;
   height: 100vh;
@@ -142,32 +149,13 @@ button {
   top: 0;
 }
 
-.popup {
-  background: white;
-  position: absolute;
-  top: 0;
-  padding: 0.5rem 1rem;
-}
+/* button */
 
-.btn-tab {
+.buttons-container {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
-}
-
-/* button */
-
-.margin-2 {
-  margin: 2rem 0;
-}
-
-.margin-left {
-  margin-left: 25px !important;
-}
-
-.button {
-  transition: 0.2s all ease-in-out;
 }
 
 .btn {
@@ -191,12 +179,8 @@ button {
   text-transform: uppercase;
 }
 
-.link {
-  color: white;
-}
-
 .open:hover {
-  background-color: var(--accent-dark);
+  background-color: var(--accent-blue-darker);
 }
 
 .open:hover > .link {
@@ -204,7 +188,7 @@ button {
 }
 
 .delete {
-  background-color: #962c2c;
+  background-color: var(--error);
   color: white;
   width: 50px;
   height: 100%;
@@ -216,14 +200,14 @@ button {
 }
 
 .delete:hover {
-  background-color: #7e2020;
+  background-color: var(--error-darker);
 }
 
 .form-delete {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #962c2c;
+  background-color: var(--error);
   height: 30px;
   width: 30px;
   display: flex;
@@ -236,7 +220,11 @@ button {
 }
 
 .form-delete:hover {
-  background-color: #7e2020;
+  background-color: var(--error-darker);
+}
+
+.desktop {
+  display: none;
 }
 
 /* form */
@@ -252,7 +240,6 @@ button {
   );
   width: 500px;
   max-width: 95%;
-  /* box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.4); */
   border-radius: 12px;
   position: relative;
 }
@@ -266,7 +253,7 @@ button {
 
 .error {
   margin-left: 10px;
-  color: #962c2c;
+  color: var(--error);
 }
 
 /* card */
@@ -280,7 +267,7 @@ button {
   align-items: center;
   margin: 1rem 0;
   justify-content: space-between;
-  height: 48px;
+  height: 55px;
 }
 
 .card-cat {
@@ -296,6 +283,25 @@ button {
 .category-text {
   display: none;
 }
+
+.card-info {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 160px;
+}
+
+/* category fill colors */
+/* style new category values HERE */
 
 .css {
   background-color: #cf60f1;
@@ -316,21 +322,7 @@ button {
   background-color: #f19c4d;
 }
 
-.card-info {
-  flex: 1;
-  text-align: left;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 0px 10px 0px 5px;
-}
-
-.truncate {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 160px;
-}
+/* media queries */
 
 @media screen and (min-width: 768px) {
   p,
@@ -373,7 +365,6 @@ button {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
   }
-
   select {
     color: white;
     font-weight: bold;
@@ -389,7 +380,15 @@ button {
   }
 
   .btn:hover {
-    background-color: #0066b2;
-    border-color: #0066b2;
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
   }
 }

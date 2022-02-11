@@ -15,6 +15,7 @@ export default function App() {
     statusHandler,
     filteredBookmarks,
     filterHandler,
+    status,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -25,19 +26,25 @@ export default function App() {
     <Card card={bookmark} key={bookmark.id} />
   ));
 
-  const emptyArr =
+  const emptyBookmark =
     bookmarks.length === 0 ? (
       <h2 className="popup">Let's get started ...</h2>
+    ) : null;
+
+  const emptyFilteredArr =
+    filteredBookmarks.length === 0 ? (
+      <h2 className="popup">No love for {status} ?</h2>
     ) : null;
 
   return (
     <div className="App">
       <div className="grid-container">
-        {emptyArr}
-        <div className="btn-tab">
+        {emptyBookmark}
+        {emptyFilteredArr}
+        <div className="buttons-container">
           <div className="btn">
             <select onChange={statusHandler}>
-              <option value="all">Filter</option>
+              <option value="all">Entries</option>
               <option value="react">React</option>
               <option value="css">CSS</option>
               <option value="design">Design</option>
@@ -49,7 +56,7 @@ export default function App() {
             Add link
           </button>
         </div>
-        <div className="cards-container">{bookmarkItems}</div>
+        <div className="bookmarks-container">{bookmarkItems}</div>
       </div>
       {isModal ? <Modal /> : null}
     </div>

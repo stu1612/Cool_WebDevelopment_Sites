@@ -1,26 +1,36 @@
 import { useContext } from "react";
+// context
 import { AppContext } from "../context/AppContext";
+// icons
 import { CgEnter } from "react-icons/cg";
 import { CgCloseO } from "react-icons/cg";
 
 export default function Card({ card }) {
   const { deleteURL } = useContext(AppContext);
+
+  const { title, notes, category, url, id } = card;
+
   return (
-    <div className="card" key={card.id}>
-      <div className={`card-cat ${card.category}`}>
-        <span className="category-text">{card.category}</span>
+    <div className="card" key={id}>
+      <div className={`card-cat ${category}`}>
+        <span className="category-text">{category}</span>
       </div>
+      <button className="open mobile">
+        <a href={url} target="_blank" rel="noreferrer">
+          <CgEnter size={22} />
+        </a>
+      </button>
       <div className="card-info">
-        <h2 className="truncate">{card.title}</h2>
-        <p className="card-text">{card.notes}</p>
+        <h2 className="truncate">{title}</h2>
+        <p className="truncate card-text">{notes}</p>
       </div>
-      <button className="open">
-        <a href={card.url} target="_blank" rel="noreferrer" className="link">
+      <button className="open desktop">
+        <a href={url} target="_blank" rel="noreferrer">
           <CgEnter size={22} />
         </a>
       </button>
       <div className="delete">
-        <CgCloseO size={22} onClick={() => deleteURL(card.id)} />
+        <CgCloseO size={22} onClick={() => deleteURL(id)} />
       </div>
     </div>
   );

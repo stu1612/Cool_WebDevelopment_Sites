@@ -7,12 +7,12 @@ const urlSchema = yup.object({
   title: yup
     .string()
     .min(4, "Must be 4 characters or more")
-    .max(15, "Must be 15 characters or less")
+    .max(25, "Must be 25 characters or less")
     .required("Required"),
   notes: yup
     .string()
     .min(4, "Must be 4 characters or more")
-    .max(15, "Must be 15 characters or less")
+    .max(50, "Must be 50 characters or less")
     .required("Required"),
   url: yup.string().url("Invalid url pattern").required("Required"),
   category: yup.string().required("Required"),
@@ -113,7 +113,7 @@ export default function ValidatedForm() {
               </select>
             </div>
           </div>
-          <div className="btn-tab margin-2">
+          <div className="buttons-container margin-2">
             <button type="submit" className="btn" onClick={props.handleSubmit}>
               Add
             </button>

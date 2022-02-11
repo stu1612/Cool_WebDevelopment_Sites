@@ -17,13 +17,13 @@ export const AppContextProvider = ({ children }) => {
     }
   });
 
-  const setStorage = useCallback(() => {
+  const setLSStorage = useCallback(() => {
     localStorage.setItem(LSKey, JSON.stringify(bookmarks));
   }, [bookmarks]);
 
   useEffect(() => {
-    setStorage();
-  }, [setStorage]);
+    setLSStorage();
+  }, [setLSStorage]);
 
   const statusHandler = (e) => {
     setStatus(e.target.value);
@@ -100,39 +100,3 @@ export const AppContextProvider = ({ children }) => {
     </AppContext.Provider>
   );
 };
-
-// {
-//   id: Math.random() * 1000,
-//   title: "Building Grid",
-//   notes: "How to implement css grid",
-//   category: "css",
-//   url: "http://www.google.com",
-// },
-// {
-//   id: Math.random() * 1000,
-//   title: "Fundamental of JS",
-//   notes: "Become a JS ninja",
-//   category: "js",
-//   url: "http://www.google.com",
-// },
-// {
-//   id: Math.random() * 1000,
-//   title: "All about React",
-//   notes: "React Hooks and more",
-//   category: "react",
-//   url: "http://www.google.com",
-// },
-// {
-//   id: Math.random() * 1000,
-//   title: "Figma Design",
-//   notes: "User flows and figma",
-//   category: "design",
-//   url: "http://www.google.com",
-// },
-// {
-//   id: Math.random() * 1000,
-//   title: "Awesome web shape builder",
-//   notes: "Create awesome CSS shapes",
-//   category: "css",
-//   url: "http://www.google.com",
-// },
