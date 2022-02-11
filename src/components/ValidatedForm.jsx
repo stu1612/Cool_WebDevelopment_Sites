@@ -15,6 +15,7 @@ const urlSchema = yup.object({
     .max(15, "Must be 15 characters or less")
     .required("Required"),
   url: yup.string().url("Invalid url pattern").required("Required"),
+  category: yup.string().required("Required"),
 });
 
 export default function ValidatedForm() {
@@ -26,7 +27,7 @@ export default function ValidatedForm() {
         title: "",
         notes: "",
         url: "",
-        category: "react",
+        category: "",
       }}
       validationSchema={urlSchema}
       onSubmit={(values, actions) => {
@@ -87,27 +88,33 @@ export default function ValidatedForm() {
               placeholder="Ex: https://reactjs.org/"
             />
           </div>
-          <div className="btn-container">
-            <select
-              id="category"
-              name="category"
-              type="text"
-              onChange={props.handleChange}
-              onBlur={props.handleBlur}
-              value={props.values.category}
-              className="select-btn"
-            >
-              <option value="react">React</option>
-              <option value="css">CSS</option>
-              <option value="design">Design</option>
-              <option value="js">JS</option>
-              <option value="frontend">Frontend</option>
-            </select>
-            <button
-              type="submit"
-              className="btn btn-yellow"
-              onClick={props.handleSubmit}
-            >
+          <div className="input-wrapper">
+            <div className="row">
+              <label htmlFor="category">Category:</label>
+              {props.touched.category && props.errors.category ? (
+                <span className="error">{props.errors.category}</span>
+              ) : null}
+            </div>
+            <div className="btn margin-left">
+              <select
+                id="category"
+                name="category"
+                type="text"
+                onChange={props.handleChange}
+                onBlur={props.handleBlur}
+                value={props.values.category}
+              >
+                <option value="">Category</option>
+                <option value="react">React</option>
+                <option value="css">CSS</option>
+                <option value="design">Design</option>
+                <option value="js">JS</option>
+                <option value="frontend">Frontend</option>
+              </select>
+            </div>
+          </div>
+          <div className="btn-tab margin-2">
+            <button type="submit" className="btn" onClick={props.handleSubmit}>
               Add
             </button>
           </div>

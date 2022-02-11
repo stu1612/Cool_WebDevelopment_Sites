@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 
 export const AppContext = createContext();
 
@@ -7,49 +7,29 @@ export const AppContextProvider = ({ children }) => {
   const [status, setStatus] = useState("all");
   const [filteredBookmarks, setFilteredBookarks] = useState([]);
 
-  const [bookmarks, setBookmarks] = useState([
-    {
-      id: Math.random() * 1000,
-      title: "Building Grid",
-      notes: "How to implement css grid",
-      category: "css",
-      url: "http://www.google.com",
-    },
-    {
-      id: Math.random() * 1000,
-      title: "Fundamental of JS",
-      notes: "Become a JS ninja",
-      category: "js",
-      url: "http://www.google.com",
-    },
-    {
-      id: Math.random() * 1000,
-      title: "All about React",
-      notes: "React Hooks and more",
-      category: "react",
-      url: "http://www.google.com",
-    },
-    {
-      id: Math.random() * 1000,
-      title: "Figma Design",
-      notes: "User flows and figma",
-      category: "design",
-      url: "http://www.google.com",
-    },
-    {
-      id: Math.random() * 1000,
-      title: "Awesome web shape builder",
-      notes: "Create awesome CSS shapes",
-      category: "css",
-      url: "http://www.google.com",
-    },
-  ]);
+  const LSKey = "bookmarks";
+
+  const [bookmarks, setBookmarks] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(LSKey)) ?? [];
+    } catch {
+      return [];
+    }
+  });
+
+  const setStorage = useCallback(() => {
+    localStorage.setItem(LSKey, JSON.stringify(bookmarks));
+  }, [bookmarks]);
+
+  useEffect(() => {
+    setStorage();
+  }, [setStorage]);
 
   const statusHandler = (e) => {
     setStatus(e.target.value);
   };
 
-  const filterHandler = () => {
+  const filterHandler = useCallback(() => {
     switch (status) {
       case "react":
         setFilteredBookarks(
@@ -80,7 +60,7 @@ export const AppContextProvider = ({ children }) => {
         setFilteredBookarks(bookmarks);
         break;
     }
-  };
+  }, [bookmarks, status]);
 
   const addBookmark = (urlObj) => {
     urlObj.id = Math.random() * 1000;

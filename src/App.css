@@ -75,12 +75,32 @@ input::placeholder {
 
 select {
   font-family: "Raleway", sans-serif;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+select:visited {
+  color: none;
+  background-color: none;
 }
 
 button {
   outline: 0;
   border: 0;
   cursor: pointer;
+  font-family: "Raleway", sans-serif;
+}
+
+.input-select {
+  background-color: white;
+  color: black;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  height: 48px;
+  border-radius: 25px;
 }
 
 .row {
@@ -129,61 +149,38 @@ button {
   padding: 0.5rem 1rem;
 }
 
-/* filter */
-.filter-container {
-  position: absolute;
-  left: 10%;
-  background: white;
-  height: 48px;
+.btn-tab {
   display: flex;
+  flex-direction: row;
+  width: 100%;
   justify-content: center;
-  align-items: center;
-  padding: 0 2rem;
 }
 
 /* button */
+
+.margin-2 {
+  margin: 2rem 0;
+}
+
+.margin-left {
+  margin-left: 25px !important;
+}
 
 .button {
   transition: 0.2s all ease-in-out;
 }
 
-.select-btn,
 .btn {
-  height: 48px;
-}
-
-.select-btn {
-  border: 0;
-  border-radius: 25px;
-  padding: 0 2rem;
-}
-
-.btn {
-  padding: 0 3rem;
   border-radius: 25px;
   background-color: transparent;
-  text-transform: uppercase;
   transition: 0.2s all ease-in-out;
-}
-
-.btn-white {
-  border: 2px solid #fafafa;
-  color: #fafafa;
-}
-
-.btn-white:hover {
-  background-color: #fafafa;
-  color: #1e2325;
-}
-
-.btn-blue {
-  border: 2px solid var(--accent-blue);
-  color: var(--accent-blue);
-}
-
-.btn-blue:hover {
-  background-color: var(--accent-blue);
-  color: var(--bg-color);
+  width: 100px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin: 0 1rem;
 }
 
 .open {
@@ -265,17 +262,6 @@ button {
   flex-direction: column;
   width: 100%;
   margin: 0.5rem 0;
-}
-
-.btn-container {
-  /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
-  padding: 1rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
 }
 
 .error {
@@ -386,5 +372,24 @@ button {
   .delete {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
+  }
+
+  select {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .btn {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 200px;
+  }
+
+  .btn:hover {
+    background-color: #0066b2;
+    border-color: #0066b2;
   }
 }

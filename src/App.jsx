@@ -6,7 +6,6 @@ import Card from "./components/Card";
 import Modal from "./components/Modal";
 // styles
 import "./App.css";
-// import FilterCategories from "./components/FilterCategories";
 
 export default function App() {
   const {
@@ -14,14 +13,13 @@ export default function App() {
     bookmarks,
     isModal,
     statusHandler,
-    status,
     filteredBookmarks,
     filterHandler,
   } = useContext(AppContext);
 
   useEffect(() => {
     filterHandler();
-  }, [status, bookmarks]);
+  }, [filterHandler]);
 
   const bookmarkItems = filteredBookmarks.map((bookmark) => (
     <Card card={bookmark} key={bookmark.id} />
@@ -36,20 +34,22 @@ export default function App() {
     <div className="App">
       <div className="grid-container">
         {emptyArr}
-        <button onClick={toggleModal} className="btn btn-white">
-          Add link
-        </button>
-        <div className="cards-container">{bookmarkItems}</div>
-        <div className="filter-container">
-          <select onChange={statusHandler}>
-            <option value="all">All</option>
-            <option value="react">React</option>
-            <option value="css">CSS</option>
-            <option value="design">Design</option>
-            <option value="js">JS</option>
-            <option value="frontend">Frontend</option>
-          </select>
+        <div className="btn-tab">
+          <div className="btn">
+            <select onChange={statusHandler}>
+              <option value="all">Filter</option>
+              <option value="react">React</option>
+              <option value="css">CSS</option>
+              <option value="design">Design</option>
+              <option value="js">JS</option>
+              <option value="frontend">Frontend</option>
+            </select>
+          </div>
+          <button onClick={toggleModal} className="btn">
+            Add link
+          </button>
         </div>
+        <div className="cards-container">{bookmarkItems}</div>
       </div>
       {isModal ? <Modal /> : null}
     </div>
