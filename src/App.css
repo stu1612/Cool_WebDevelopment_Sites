@@ -1,10 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap");
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -21,6 +29,11 @@
 html,
 body {
   font-family: "Raleway", sans-serif;
+  background-image: -o-linear-gradient(
+    340.4deg,
+    rgba(156, 252, 248, 1) 11.2%,
+    rgba(110, 123, 251, 1) 91.1%
+  );
   background-image: linear-gradient(
     109.6deg,
     rgba(156, 252, 248, 1) 11.2%,
@@ -57,8 +70,26 @@ input {
   height: 48px;
   border-radius: 25px;
   width: 90%;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   padding: 0 0.5rem;
+}
+
+input::-webkit-input-placeholder {
+  color: #9999;
+}
+
+input::-moz-placeholder {
+  color: #9999;
+}
+
+input:-ms-input-placeholder {
+  color: #9999;
+}
+
+input::-ms-input-placeholder {
+  color: #9999;
 }
 
 input::placeholder {
@@ -96,15 +127,27 @@ button {
 }
 
 .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
+
 /* App */
 
 .App {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -118,19 +161,26 @@ button {
 /* layout */
 
 .grid-container {
+  display: -ms-grid;
   display: grid;
   width: min(95%, 60rem);
   min-height: 100vh;
   row-gap: 1.5rem;
   justify-items: center;
+  -ms-flex-line-pack: start;
   align-content: flex-start;
   text-align: center;
   padding: 5rem 0;
 }
 
 .bookmarks-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
   width: 100%;
 }
@@ -142,9 +192,16 @@ button {
   height: 100vh;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-filter: drop-shadow(2px 4px 6px black);
   filter: drop-shadow(2px 4px 6px black);
   top: 0;
 }
@@ -152,20 +209,35 @@ button {
 /* button */
 
 .buttons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .btn {
   border-radius: 25px;
   background-color: transparent;
+  -webkit-transition: 0.2s all ease-in-out;
+  -o-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
   width: 100px;
   height: 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   background-color: white;
   margin: 0 1rem;
@@ -175,6 +247,8 @@ button {
   background-color: var(--accent-blue);
   height: 100%;
   width: 50px;
+  -webkit-transition: 0.2s all ease-in-out;
+  -o-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
   text-transform: uppercase;
 }
@@ -192,10 +266,18 @@ button {
   color: white;
   width: 50px;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   cursor: pointer;
+  -webkit-transition: 0.2s all ease-in-out;
+  -o-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
 }
 
@@ -210,12 +292,20 @@ button {
   background-color: var(--error);
   height: 30px;
   width: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   color: white;
   border-top-right-radius: 12px;
   cursor: pointer;
+  -webkit-transition: 0.2s all ease-in-out;
+  -o-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
 }
 
@@ -230,9 +320,21 @@ button {
 /* form */
 
 .form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
+  background-image: -o-linear-gradient(
+    340.4deg,
+    rgba(156, 252, 248, 1) 11.2%,
+    rgba(110, 123, 251, 1) 91.1%
+  );
   background-image: linear-gradient(
     109.6deg,
     rgba(156, 252, 248, 1) 11.2%,
@@ -245,7 +347,12 @@ button {
 }
 
 .input-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
   margin: 0.5rem 0;
@@ -260,12 +367,22 @@ button {
 
 .card {
   background-color: var(--primary-light);
+  -webkit-box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.4);
   box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.4);
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin: 1rem 0;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   height: 55px;
 }
@@ -275,8 +392,14 @@ button {
   color: white;
   width: 10px;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -285,10 +408,17 @@ button {
 }
 
 .card-info {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   text-align: left;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   padding-left: 10px;
 }
@@ -296,6 +426,7 @@ button {
 .truncate {
   white-space: nowrap;
   overflow: hidden;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   width: 160px;
 }
@@ -342,7 +473,12 @@ button {
   }
   .card-info {
     text-align: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
   .truncate {
