@@ -5,10 +5,10 @@ import { AppContext } from "../context/AppContext";
 import { CgEnter } from "react-icons/cg";
 import { CgCloseO } from "react-icons/cg";
 
-export default function Card({ card }) {
-  const { deleteURL } = useContext(AppContext);
+export default function Card({ bookmark }) {
+  const { deleteBookmark } = useContext(AppContext);
 
-  const { title, notes, category, url, id } = card;
+  const { title, notes, category, url, id } = bookmark;
 
   return (
     <div className="card" key={id}>
@@ -30,7 +30,7 @@ export default function Card({ card }) {
         </a>
       </button>
       <div className="delete">
-        <CgCloseO size={22} onClick={() => deleteURL(id)} />
+        <CgCloseO size={22} onClick={() => deleteBookmark(id)} />
       </div>
     </div>
   );

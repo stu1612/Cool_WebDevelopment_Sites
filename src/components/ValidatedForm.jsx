@@ -95,23 +95,22 @@ export default function ValidatedForm() {
                 <span className="error">{props.errors.category}</span>
               ) : null}
             </div>
-            <div className="btn margin-left">
-              <select
-                id="category"
-                name="category"
-                type="text"
-                onChange={props.handleChange}
-                onBlur={props.handleBlur}
-                value={props.values.category}
-              >
-                <option value="">Category</option>
-                <option value="react">React</option>
-                <option value="css">CSS</option>
-                <option value="design">Design</option>
-                <option value="js">JS</option>
-                <option value="frontend">Frontend</option>
-              </select>
-            </div>
+            <select
+              id="category"
+              name="category"
+              type="text"
+              onChange={props.handleChange}
+              onBlur={props.handleBlur}
+              value={props.values.category}
+              className="btn margin-left"
+            >
+              <option value="">Category</option>
+              <option value="react">React</option>
+              <option value="css">CSS</option>
+              <option value="design">Design</option>
+              <option value="js">JS</option>
+              <option value="frontend">Frontend</option>
+            </select>
           </div>
           <div className="buttons-container margin-2">
             <button type="submit" className="btn" onClick={props.handleSubmit}>

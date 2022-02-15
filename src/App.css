@@ -102,6 +102,9 @@ select {
   outline: 0;
   cursor: pointer;
   background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 select:visited {
@@ -156,6 +159,10 @@ button {
   position: absolute;
   top: 0;
   padding: 0.5rem 1rem;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
 }
 
 /* layout */
@@ -241,6 +248,10 @@ button {
   align-items: center;
   background-color: white;
   margin: 0 1rem;
+  text-align: center;
+  border: 2px solid var(--accent-blue);
+  text-transform: uppercase;
+  color: var(--accent-blue);
 }
 
 .open {
@@ -449,6 +460,7 @@ button {
 .js {
   background-color: #339de0;
 }
+
 .frontend {
   background-color: #f19c4d;
 }
@@ -506,6 +518,7 @@ button {
     font-weight: bold;
     text-transform: uppercase;
   }
+
   .btn {
     background-color: transparent;
     border: 2px solid white;

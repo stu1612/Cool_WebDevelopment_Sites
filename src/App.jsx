@@ -6,6 +6,7 @@ import Card from "./components/Card";
 import Modal from "./components/Modal";
 // styles
 import "./App.css";
+import FilterBookmarks from "./components/FilterBookmarks";
 
 export default function App() {
   const {
@@ -22,35 +23,29 @@ export default function App() {
     filterHandler();
   }, [filterHandler]);
 
-  const bookmarkItems = filteredBookmarks.map((bookmark) => (
-    <Card card={bookmark} key={bookmark.id} />
-  ));
+  const bookmarkItems =
+    filteredBookmarks &&
+    filteredBookmarks.map((bookmark) => (
+      <Card bookmark={bookmark} key={bookmark.id} />
+    ));
 
-  const emptyBookmark =
-    bookmarks.length === 0 ? (
-      <h2 className="popup">Let's get started ...</h2>
-    ) : null;
+  const emptyBookmark = bookmarks.length === 0 && (
+    <h2 className="popup">Let's get started ...</h2>
+  );
 
-  const emptyFilteredArr =
-    filteredBookmarks.length === 0 ? (
-      <h2 className="popup">No love for {status} ?</h2>
-    ) : null;
+  const emptyFilteredArray = filteredBookmarks.length === 0 && (
+    <h2 className="popup">No love for {status} ?</h2>
+  );
 
   return (
     <div className="App">
       <div className="grid-container">
         {emptyBookmark}
-        {emptyFilteredArr}
+        {emptyFilteredArray}
         <div className="buttons-container">
-          <div className="btn">
-            <select onChange={statusHandler}>
-              <option value="all">Entries</option>
-              <option value="react">React</option>
-              <option value="css">CSS</option>
-              <option value="design">Design</option>
-              <option value="js">JS</option>
-              <option value="frontend">Frontend</option>
-            </select>
+          {/* <div className="btn"> */}
+          <div>
+            <FilterBookmarks changeHandler={statusHandler} />
           </div>
           <button onClick={toggleModal} className="btn">
             Add link
@@ -58,7 +53,7 @@ export default function App() {
         </div>
         <div className="bookmarks-container">{bookmarkItems}</div>
       </div>
-      {isModal ? <Modal /> : null}
+      {isModal && <Modal />}
     </div>
   );
 }
