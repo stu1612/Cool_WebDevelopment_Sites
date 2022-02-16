@@ -5,7 +5,7 @@ export const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const [isModal, setIsModal] = useState(false);
   const [status, setStatus] = useState("all");
-  const [filteredBookmarks, setFilteredBookarks] = useState([]);
+  const [filteredBookmarks, setFilteredBookmarks] = useState([]);
 
   const LSKey = "bookmarks";
 
@@ -32,32 +32,32 @@ export const AppContextProvider = ({ children }) => {
   const filterHandler = useCallback(() => {
     switch (status) {
       case "react":
-        setFilteredBookarks(
+        setFilteredBookmarks(
           bookmarks.filter((bookmark) => bookmark.category === "react")
         );
         break;
       case "css":
-        setFilteredBookarks(
+        setFilteredBookmarks(
           bookmarks.filter((bookmark) => bookmark.category === "css")
         );
         break;
       case "design":
-        setFilteredBookarks(
+        setFilteredBookmarks(
           bookmarks.filter((bookmark) => bookmark.category === "design")
         );
         break;
       case "js":
-        setFilteredBookarks(
+        setFilteredBookmarks(
           bookmarks.filter((bookmark) => bookmark.category === "js")
         );
         break;
       case "frontend":
-        setFilteredBookarks(
+        setFilteredBookmarks(
           bookmarks.filter((bookmark) => bookmark.category === "frontend")
         );
         break;
       default:
-        setFilteredBookarks(bookmarks);
+        setFilteredBookmarks(bookmarks);
         break;
     }
   }, [bookmarks, status]);
