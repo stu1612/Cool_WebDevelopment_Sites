@@ -1,7 +1,16 @@
-export default function FilterBookmarks({ changeHandler }) {
+import { useEffect, useContext } from "react";
+import { AppContext } from "../context/AppContext";
+
+export default function FilterBookmarks() {
+  const { statusHandler, filterBookmark } = useContext(AppContext);
+
+  useEffect(() => {
+    filterBookmark();
+  }, [filterBookmark]);
+
   return (
-    <select onChange={changeHandler} className="btn">
-      <option value="all">Entries</option>
+    <select onChange={statusHandler} className="btn">
+      <option value="all">Filter</option>
       <option value="react">React</option>
       <option value="css">CSS</option>
       <option value="design">Design</option>

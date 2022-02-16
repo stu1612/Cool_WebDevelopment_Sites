@@ -29,7 +29,7 @@ export const AppContextProvider = ({ children }) => {
     setStatus(e.target.value);
   };
 
-  const filterHandler = useCallback(() => {
+  const filterBookmark = useCallback(() => {
     switch (status) {
       case "react":
         setFilteredBookmarks(
@@ -89,7 +89,7 @@ export const AppContextProvider = ({ children }) => {
         toggleModal,
         addBookmark,
         deleteBookmark,
-        filterHandler,
+        filterBookmark,
         filteredBookmarks,
         status,
         setStatus,
