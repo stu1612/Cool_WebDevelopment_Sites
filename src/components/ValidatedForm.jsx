@@ -38,6 +38,7 @@ export default function ValidatedForm() {
       {(props) => (
         <div className="form-container">
           <div className="input-wrapper">
+            <div className="margin-1" />
             <div className="row">
               <label htmlFor="title">Title:</label>
               {props.touched.title && props.errors.title ? (
@@ -118,7 +119,7 @@ export default function ValidatedForm() {
             </button>
           </div>
           <button className="form-delete" onClick={toggleModal}>
-            x
+            CLOSE
           </button>
         </div>
       )}

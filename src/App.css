@@ -61,7 +61,7 @@ a {
 label {
   text-align: left;
   padding: 0.5rem 0 0.5rem 1rem;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 input {
@@ -122,6 +122,9 @@ button {
 }
 
 /* general */
+.margin-1 {
+  margin: 1rem 0;
+}
 
 .margin-2 {
   margin: 2rem 0;
@@ -319,7 +322,7 @@ button {
   right: 0;
   background-color: var(--error);
   height: 30px;
-  width: 30px;
+  width: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -335,6 +338,7 @@ button {
   -webkit-transition: 0.2s all ease-in-out;
   -o-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
+  padding: 1rem;
 }
 
 .form-delete:hover {
@@ -490,6 +494,16 @@ button {
     font-size: 12px;
     line-height: 18px;
   }
+  select {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-indent: 70px hanging;
+  }
+  label {
+    font-size: 12px;
+  }
+
   h2 {
     font-size: 18px;
     line-height: 27px;
@@ -529,12 +543,6 @@ button {
   .delete {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-  }
-  select {
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-indent: 70px hanging;
   }
 
   .btn {
