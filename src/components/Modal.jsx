@@ -1,10 +1,12 @@
 import ReactDOM from "react-dom";
-import ValidatedForm from "./ValidatedForm";
+// import ValidatedForm from "./ValidatedForm";
+import Form from "./Form";
 
-export default function Modal({ toggleModal }) {
+export default function Modal() {
   return ReactDOM.createPortal(
     <div className="modal-background">
-      <ValidatedForm toggleModal={toggleModal} />
+      {/* <ValidatedForm /> */}
+      <Form />
     </div>,
     document.body
   );

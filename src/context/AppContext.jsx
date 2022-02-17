@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useCallback } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export const AppContext = createContext();
 
@@ -62,11 +63,15 @@ export const AppContextProvider = ({ children }) => {
     }
   }, [bookmarks, status]);
 
-  const addBookmark = (urlObj) => {
-    urlObj.id = Math.random() * 1000;
-    setBookmarks((prevBookmark) => {
-      return [urlObj, ...prevBookmark];
-    });
+  const addBookmark = (title, notes, category, url) => {
+    const newBookmark = {
+      title: title,
+      notes: notes,
+      category: category,
+      url: url,
+      id: uuidv4(),
+    };
+    setBookmarks([newBookmark, ...bookmarks]);
     toggleModal();
   };
 
