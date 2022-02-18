@@ -6,7 +6,8 @@ import { CgEnter } from "react-icons/cg";
 import { CgCloseO } from "react-icons/cg";
 
 export default function Card({ bookmark }) {
-  const { deleteBookmark } = useContext(AppContext);
+  // const { deleteBookmark } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const { title, notes, category, url, id } = bookmark;
 
@@ -30,7 +31,16 @@ export default function Card({ bookmark }) {
         </a>
       </button>
       <div className="delete">
-        <CgCloseO size={22} onClick={() => deleteBookmark(id)} />
+        {/* <CgCloseO size={22} onClick={() => deleteBookmark(id)} /> */}
+        <CgCloseO
+          size={22}
+          onClick={() =>
+            dispatch({
+              type: "REMOVE_BOOKMARK",
+              id: bookmark.id,
+            })
+          }
+        />
       </div>
     </div>
   );

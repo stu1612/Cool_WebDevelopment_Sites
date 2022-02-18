@@ -1,30 +1,40 @@
-import { createContext, useState, useEffect, useCallback } from "react";
-import { v4 as uuidv4 } from "uuid";
+import {
+  createContext,
+  useState,
+  useEffect,
+  useCallback,
+  useReducer,
+} from "react";
+// import { v4 as uuidv4 } from "uuid";
+import { appReducer } from "../reducers/appReducer";
 
 export const AppContext = createContext();
+
+const storageKey = "bookmarks";
 
 export const AppContextProvider = ({ children }) => {
   const [isModal, setIsModal] = useState(false);
   const [status, setStatus] = useState("all");
   const [filteredBookmarks, setFilteredBookmarks] = useState([]);
+  const [bookmarks, dispatch] = useReducer(appReducer, []);
 
-  const LSKey = "bookmarks";
+  // useEffect(() => getLocalStorage(storageKey), []);
 
-  const [bookmarks, setBookmarks] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem(LSKey)) ?? [];
-    } catch {
-      return [];
-    }
-  });
+  const setLocalStorage = useCallback(
+    (key) => {
+      const data = JSON.stringify(bookmarks);
+      localStorage.setItem(key, data);
+    },
+    [bookmarks]
+  );
 
-  const setLSStorage = useCallback(() => {
-    localStorage.setItem(LSKey, JSON.stringify(bookmarks));
-  }, [bookmarks]);
+  useEffect(() => setLocalStorage(storageKey), [setLocalStorage]);
 
-  useEffect(() => {
-    setLSStorage();
-  }, [setLSStorage]);
+  // const getLocalStorage = (key) => {
+  //   const data = localStorage.getItem(key);
+  //   const storedItems = JSON.parse(data) || [];
+  //   setBookmarks(storedItems);
+  // };
 
   const statusHandler = (e) => {
     setStatus(e.target.value);
@@ -63,24 +73,24 @@ export const AppContextProvider = ({ children }) => {
     }
   }, [bookmarks, status]);
 
-  const addBookmark = (title, notes, category, url) => {
-    const newBookmark = {
-      title: title,
-      notes: notes,
-      category: category,
-      url: url,
-      id: uuidv4(),
-    };
-    setBookmarks([newBookmark, ...bookmarks]);
-    toggleModal();
-  };
+  // const addBookmark = (title, notes, category, url) => {
+  //   const newBookmark = {
+  //     title: title,
+  //     notes: notes,
+  //     category: category,
+  //     url: url,
+  //     id: uuidv4(),
+  //   };
+  //   setBookmarks([newBookmark, ...bookmarks]);
+  //   toggleModal();
+  // };
 
-  const deleteBookmark = (id) => {
-    const removeItem = bookmarks.filter((card) => {
-      return card.id !== id;
-    });
-    setBookmarks(removeItem);
-  };
+  // const deleteBookmark = (id) => {
+  //   const removeItem = bookmarks.filter((card) => {
+  //     return card.id !== id;
+  //   });
+  //   setBookmarks(removeItem);
+  // };
 
   const toggleModal = () => {
     setIsModal(!isModal);
@@ -92,8 +102,9 @@ export const AppContextProvider = ({ children }) => {
         bookmarks,
         isModal,
         toggleModal,
-        addBookmark,
-        deleteBookmark,
+        // addBookmark,
+        // deleteBookmark,
+        dispatch,
         filterBookmark,
         filteredBookmarks,
         status,

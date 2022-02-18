@@ -11,7 +11,7 @@ const STATUS = {
 };
 
 export default function Form() {
-  const { toggleModal, addBookmark } = useContext(AppContext);
+  const { toggleModal, dispatch } = useContext(AppContext);
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
   const [url, setUrl] = useState("");
@@ -35,7 +35,11 @@ export default function Form() {
     setStatus(STATUS.SUBMITTING);
     if (isFormValid) {
       try {
-        addBookmark(title, notes, category, url);
+        // addBookmark(title, notes, category, url);
+        dispatch({
+          type: "ADD_BOOKMARK",
+          bookmark: { title, notes, url, category },
+        });
         setStatus(STATUS.COMPLETED);
       } catch (err) {
         setSaveError(err);
