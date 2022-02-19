@@ -35,7 +35,6 @@ export default function Form() {
     setStatus(STATUS.SUBMITTING);
     if (isFormValid) {
       try {
-        // addBookmark(title, notes, category, url);
         dispatch({
           type: "ADD_BOOKMARK",
           bookmark: { title, notes, url, category },

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-// context
 import { AppContext } from "./context/AppContext";
 // components
 import Card from "./components/Card";

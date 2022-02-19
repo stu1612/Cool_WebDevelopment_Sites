@@ -1,12 +1,15 @@
 import { useEffect, useContext } from "react";
 import { AppContext } from "../context/AppContext";
+// utils
+import bookmarkFilter from "../utils/bookmarkFilter";
 
 export default function FilterBookmarks() {
-  const { statusHandler, filterBookmark } = useContext(AppContext);
+  const { statusHandler, status, bookmarks, setFilteredBookmarks } =
+    useContext(AppContext);
 
   useEffect(() => {
-    filterBookmark();
-  }, [filterBookmark]);
+    bookmarkFilter(status, bookmarks, setFilteredBookmarks);
+  }, [status, bookmarks, setFilteredBookmarks]);
 
   return (
     <select onChange={statusHandler} className="btn">

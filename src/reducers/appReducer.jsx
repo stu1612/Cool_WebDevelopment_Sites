@@ -15,6 +15,7 @@ export function appReducer(state, action) {
       ];
     case "REMOVE_BOOKMARK":
       return state.filter((bookmark) => bookmark.id !== action.id);
+
     default:
       return state;
   }
