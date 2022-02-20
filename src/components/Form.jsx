@@ -50,13 +50,17 @@ export default function Form() {
     }
   }
 
+  if (saveError) throw saveError;
+
   return (
     <form onSubmit={submitHandler} className="form-container">
       <div className="input-wrapper">
         <div className="margin-1" />
         <div className="row">
           <label htmlFor="title">Title:</label>
-          <span className="error">{touched.title && errors.title}</span>
+          <span className="error">
+            {(touched.title || status === STATUS.SUBMITTED) && errors.title}
+          </span>
         </div>
         <input
           id="title"
@@ -71,7 +75,9 @@ export default function Form() {
       <div className="input-wrapper">
         <div className="row">
           <label htmlFor="notes">Notes:</label>
-          <span className="error">{touched.notes && errors.notes}</span>
+          <span className="error">
+            {(touched.notes || status === STATUS.SUBMITTED) && errors.notes}
+          </span>
         </div>
         <input
           id="notes"
@@ -86,7 +92,9 @@ export default function Form() {
       <div className="input-wrapper">
         <div className="row">
           <label htmlFor="url">URL Address:</label>
-          <span className="error">{touched.url && errors.url}</span>
+          <span className="error">
+            {(touched.url || status === STATUS.SUBMITTED) && errors.url}
+          </span>
         </div>
         <input
           id="url"
@@ -101,7 +109,10 @@ export default function Form() {
       <div className="input-wrapper">
         <div className="row">
           <label htmlFor="category">Category:</label>
-          <span className="error">{touched.category && errors.category}</span>
+          <span className="error">
+            {(touched.cetegory || status === STATUS.SUBMITTED) &&
+              errors.category}
+          </span>
         </div>
         <select
           id="category"
