@@ -22,6 +22,7 @@ Step One:
 ```sh
 GO TO : src/components/Form.jsx
 GO TO : Line 117 - find select tab
+Find option values - here you an add or remove a value
 ```
 ```
 <option value="">Category</option>
@@ -30,6 +31,37 @@ GO TO : Line 117 - find select tab
 <option value="design">Design</option>
 <option value="js">JS</option>
 <option value="frontend">Frontend</option>
+```
+
+Step Two:
+
+```sh
+GO TO : src/utils/bookmarkFilter.js
+Update the bookamrkFilter util function by adding or removing the corresponsding value
+```
+```
+export default function bookmarkFilter(status, state, stateSetter) {
+  switch (status) {
+    case "react":
+      stateSetter(state.filter((item) => item.category === "react"));
+      break;
+    case "css":
+      stateSetter(state.filter((item) => item.category === "css"));
+      break;
+    case "design":
+      stateSetter(state.filter((item) => item.category === "design"));
+      break;
+    case "js":
+      stateSetter(state.filter((item) => item.category === "js"));
+      break;
+    case "frontend":
+      stateSetter(state.filter((item) => item.category === "frontend"));
+      break;
+    default:
+      stateSetter(state);
+      break;
+  }
+}
 ```
 
 ### `yarn eject`
