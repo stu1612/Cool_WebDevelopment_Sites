@@ -10,7 +10,8 @@ User can add and delete url links which are saved to localStorage.  User can als
 
 
 ```sh
-Clone (https://github.com/stu1612/Web_Bookmarks.git)
+git clone (https://github.com/stu1612/Web_Bookmarks.git) urlApp
+cd urlApp
 yarn install
 yarn start
 ```
