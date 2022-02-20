@@ -24,7 +24,7 @@ Step One:
 ```sh
 GO TO : src/components/Form.jsx
 GO TO : Line 117 - find select tab
-Find option values - here you an add or remove a value
+Find option values - here you an add or remove a option value
 ```
 ```
 <option value="">Category</option>
@@ -33,6 +33,9 @@ Find option values - here you an add or remove a value
 <option value="design">Design</option>
 <option value="js">JS</option>
 <option value="frontend">Frontend</option>
+
+*ADD CUSTOM OPTION*
+<option value="custom">custom</option>
 ```
 
 Step Two:
