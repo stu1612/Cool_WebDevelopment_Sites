@@ -23,13 +23,14 @@ Step One:
 GO TO : src/components/Form.jsx
 GO TO : Line 117 - find select tab
 ```
+```
 <option value="">Category</option>
-          <option value="react">React</option>
-          <option value="css">CSS</option>
-          <option value="design">Design</option>
-          <option value="js">JS</option>
-          <option value="frontend">Frontend</option>
-
+<option value="react">React</option>
+<option value="css">CSS</option>
+<option value="design">Design</option>
+<option value="js">JS</option>
+<option value="frontend">Frontend</option>
+```
 
 ### `yarn eject`
 
