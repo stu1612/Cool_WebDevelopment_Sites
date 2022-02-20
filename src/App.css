@@ -56,6 +56,7 @@ h2 {
 a {
   text-decoration: none;
   color: white;
+  height: inherit;
 }
 
 label {
@@ -208,7 +209,7 @@ button {
   -webkit-box-pack: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  width: 100%;
+  /* width: 100%; */
 }
 
 /* modal */
@@ -249,13 +250,12 @@ button {
 }
 
 .btn {
-  border-radius: 25px;
   background-color: transparent;
   -webkit-transition: 0.2s all ease-in-out;
   -o-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
   width: 100px;
-  height: 48px;
+  height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -265,13 +265,19 @@ button {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: var(--accent-blue);
+  border: 1px solid white;
   margin: 0 1rem;
   text-align: center;
   text-transform: uppercase;
   color: white;
   font-weight: 600;
   text-align: -webkit-center;
+  letter-spacing: 2px;
+  box-shadow: 4px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn:hover {
+  box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.16);
 }
 
 .open {
@@ -460,7 +466,7 @@ button {
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  width: 160px;
+  width: 130px;
 }
 
 /* category fill colors */
@@ -487,6 +493,12 @@ button {
 }
 
 /* media queries */
+
+@media screen and (min-width: 320px) {
+  .truncate {
+    width: 180px;
+  }
+}
 
 @media screen and (min-width: 768px) {
   p,
@@ -547,11 +559,12 @@ button {
 
   .btn {
     background-color: transparent;
-    border: 2px solid white;
     color: white;
+    border-radius: 25px;
     font-weight: bold;
     text-transform: uppercase;
     width: 200px;
+    height: 48px;
   }
 
   .btn:hover {

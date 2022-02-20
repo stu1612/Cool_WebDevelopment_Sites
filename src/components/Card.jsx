@@ -1,5 +1,4 @@
 import { useContext } from "react";
-// context
 import { AppContext } from "../context/AppContext";
 // icons
 import { CgEnter } from "react-icons/cg";
@@ -24,11 +23,11 @@ export default function Card({ bookmark }) {
         <h2 className="truncate">{title}</h2>
         <p className="truncate card-text">{notes}</p>
       </div>
-      <button className="open desktop">
-        <a href={url} target="_blank" rel="noreferrer">
+      <a href={url} target="_blank" rel="noreferrer">
+        <button className="open desktop">
           <CgEnter size={22} />
-        </a>
-      </button>
+        </button>
+      </a>
       <div className="delete">
         <CgCloseO
           size={22}
