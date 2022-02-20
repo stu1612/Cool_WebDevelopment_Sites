@@ -1,33 +1,35 @@
-# Getting Started with Create React App
+# Save my URL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Small React app implementing useContext and useReducer hooks. User can save important URL links to local storage - something useful that i wanted to build whilst i continue to leanr and find new information and find useful links that i know i will need in the future.
 
-## Available Scripts
+## [Deployed Site](https://save-my-url.netlify.app/)
 
-In the project directory, you can run:
+### `installation`
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```sh
+Clone [repo](https://github.com/stu1612/Web_Bookmarks.git)
+yarn install
+yarn start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `Development`
 
-### `yarn test`
+User can filter features and add additional categories as they wish:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Step One:
 
-### `yarn build`
+```sh
+GO TO : src/components/Form.jsx
+GO TO : Line 117 - find select tab
+```
+<option value="">Category</option>
+          <option value="react">React</option>
+          <option value="css">CSS</option>
+          <option value="design">Design</option>
+          <option value="js">JS</option>
+          <option value="frontend">Frontend</option>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `yarn eject`
 
